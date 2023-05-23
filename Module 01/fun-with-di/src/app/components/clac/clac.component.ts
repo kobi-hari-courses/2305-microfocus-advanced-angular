@@ -1,6 +1,7 @@
 import { Component, Injector } from '@angular/core';
 import { AdditionService } from 'src/app/services/addition.service';
 import { GroupComponent } from '../group/group.component';
+import { CommonInterface } from 'src/app/services/service-interface';
 
 @Component({
   selector: 'app-clac',
