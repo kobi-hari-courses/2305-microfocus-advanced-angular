@@ -1,0 +1,56 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.field label {
+    font-size: 12px;
+    color: gray;
+}
+
+input.ng-invalid.ng-touched {
+    color: red;
+    border: 1px solid red;
+}
+
+input {
+    outline: transparent;
+    max-width: 100px;
+}
+
+
+app-number-spinner.ng-dirty::after {
+    content: 'dirty';
+    position: absolute;
+    left: 100px;
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: yellow;
+}
+
+input.ng-dirty {
+    outline: 2px solid yellow;
+    margin: 2px;
+}
+
+input.ng-touched {
+    background-color: lime;
+}
+
+app-number-spinner.ng-touched::before {
+    content: 'touched';
+    position: absolute;
+    left: 200px;
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: green;
+}
+
