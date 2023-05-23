@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { HistoryService } from "./history.service";
 import { CommonInterface } from "./service-interface";
 
