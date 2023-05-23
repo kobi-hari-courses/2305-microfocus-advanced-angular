@@ -3,3 +3,7 @@
 <app-group></app-group>
 <hr>
 <app-clac></app-clac>
+<hr>
+
+<button (click)="toggleComplex()">Toggle Complex</button>
+<app-complex-viewer *ngIf="isShowingComplex"></app-complex-viewer>

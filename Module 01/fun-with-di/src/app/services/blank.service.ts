@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class BlankService {
 
   constructor() { }
+
+  calculateTheComplexNumber() {
+    return 2.718;
+  }
 }

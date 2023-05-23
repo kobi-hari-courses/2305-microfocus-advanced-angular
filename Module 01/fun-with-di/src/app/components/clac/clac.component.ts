@@ -11,7 +11,9 @@ import { WrongAdditionService } from 'src/app/services/wrong-addition.service';
 })
 export class ClacComponent {
 
-  constructor(protected additionService: AdditionService) {
+  constructor(
+    protected additionService: AdditionService, 
+    protected wrongAdditionService: WrongAdditionService) {
     }
 
   result = -1;

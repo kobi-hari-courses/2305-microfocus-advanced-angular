@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { CommonInterface } from "./service-interface";
 import { HistoryService } from './history.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class WrongAdditionService implements CommonInterface {
 
     id: number; 

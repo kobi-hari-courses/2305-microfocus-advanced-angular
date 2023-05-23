@@ -16,3 +16,7 @@ input {
     align-self: center;
     font-family: consolas;
 }
+
+.service:nth-child(2) {
+    color: red;
+}
