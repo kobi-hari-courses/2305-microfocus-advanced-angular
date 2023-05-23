@@ -1,9 +1,18 @@
 :host {
     display: flex;
     flex-direction: row;
+    margin: 4px;
 }
 
 
 input {
     max-width: 60px;
+}
+
+.service {
+    font-size: 0.6em;
+    max-width: 100px;
+    color: blue;
+    align-self: center;
+    font-family: consolas;
 }
