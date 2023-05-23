@@ -35,7 +35,7 @@ export class HistoryService {
 
     async init() {
         console.log('History service started initializtion');
-        await new Promise(res => setTimeout(res, 6000));
+        await new Promise(res => setTimeout(res, 1500));
         console.log('History service initialized');
     }
 }

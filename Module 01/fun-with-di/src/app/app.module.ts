@@ -14,8 +14,9 @@ import { BlankService } from './services/blank.service';
 import { FAVORITE_COLOR } from './tokens/color.token';
 import { FirstModule } from './first.module';
 import { SecondModule } from './second.module';
-import { FactoryTarget } from '@angular/compiler';
 import { HistoryService } from './services/history.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LogInterceptor } from './interceptors/log.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HistoryService } from './services/history.service';
   imports: [
     BrowserModule, 
     FirstModule, 
-    SecondModule
+    SecondModule, 
+    HttpClientModule
   ],
   providers: [
     {
@@ -64,7 +66,11 @@ import { HistoryService } from './services/history.service';
       useFactory: (service: BlankService) => () => service.init(),
       multi: true, 
       deps: [BlankService]
-
+    }, 
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: LogInterceptor, 
+      multi: true
     }
   ],
   bootstrap: [AppComponent],
