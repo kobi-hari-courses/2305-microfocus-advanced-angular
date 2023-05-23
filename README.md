@@ -1,2 +1,11 @@
-# 2305-microfocus-advanced-angular
-2305-microfocus-advanced-angular
+# Course: Microfocus Advanced Angular (05/23)
+
+## Agenda
+
+## Advanced Course Agenda
+* Dependency Injection
+* Custom Form Controls
+* RxJS
+* Redux - Component Store
+
+

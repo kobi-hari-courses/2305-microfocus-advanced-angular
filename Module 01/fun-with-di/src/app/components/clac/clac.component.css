@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
+
+input {
+    max-width: 60px;
+}
