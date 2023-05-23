@@ -1,2 +1,4 @@
 <h1 (mousemove)="whenTheMouseMoves()">Complex = {{complex}}</h1>
 <!-- You should NEVER do this - NEVER call functions in the template!!! -->
+
+<h2 *ngFor="let color of favoriteColors" [style.color]="color">Favorites color is {{color}}</h2>

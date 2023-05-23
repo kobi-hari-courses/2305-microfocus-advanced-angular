@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FAVORITE_COLOR } from 'src/app/tokens/color.token';
 import { COMPLEX } from 'src/app/tokens/complex.token';
 
 @Component({
@@ -8,7 +9,8 @@ import { COMPLEX } from 'src/app/tokens/complex.token';
 })
 export class ComplexViewerComponent {
   constructor(
-    @Inject(COMPLEX) public complex: number
+    @Inject(COMPLEX) public complex: number, 
+    @Inject(FAVORITE_COLOR) public favoriteColors: string[]
   ){}
 
 

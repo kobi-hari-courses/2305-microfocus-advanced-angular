@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -11,36 +11,63 @@ import { TIMESTAMP } from './tokens/timestamp.token';
 import { COMPLEX } from './tokens/complex.token';
 import { ComplexViewerComponent } from './components/complex-viewer/complex-viewer.component';
 import { BlankService } from './services/blank.service';
+import { FAVORITE_COLOR } from './tokens/color.token';
+import { FirstModule } from './first.module';
+import { SecondModule } from './second.module';
+import { FactoryTarget } from '@angular/compiler';
+import { HistoryService } from './services/history.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClacComponent,
     GroupComponent,
-    ComplexViewerComponent
+    ComplexViewerComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    FirstModule, 
+    SecondModule
   ],
   providers: [
     {
-      provide: AdditionService, 
-      useExisting: WrongAdditionService
-    }, 
+      provide: AdditionService,
+      useExisting: WrongAdditionService,
+    },
     {
-      provide: HISTORY_PREFIX, 
-      useValue: 'INFO'
-    }, 
+      provide: HISTORY_PREFIX,
+      useValue: 'INFO',
+    },
     {
-      provide: TIMESTAMP, 
-      useValue: () => new Date()
-    }, 
+      provide: TIMESTAMP,
+      useValue: () => new Date(),
+    },
     {
       provide: COMPLEX,
-      useFactory: (blankService: BlankService) => blankService.calculateTheComplexNumber(), 
+      useFactory: (blankService: BlankService) =>
+        blankService.calculateTheComplexNumber(),
+      deps: [BlankService],
+    },
+    {
+      provide: FAVORITE_COLOR, 
+      useValue: 'green', 
+      multi: true
+    }, 
+    {
+      provide: APP_INITIALIZER, 
+      useFactory: (historyService: HistoryService) => () => historyService.init(),
+      multi: true, 
+      deps: [HistoryService]
+    }, 
+    {
+      provide: APP_INITIALIZER, 
+      useFactory: (service: BlankService) => () => service.init(),
+      multi: true, 
       deps: [BlankService]
+
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
