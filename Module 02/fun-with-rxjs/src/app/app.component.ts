@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, Observer, interval, of } from 'rxjs';
+import { BehaviorSubject, Observable, Observer, ReplaySubject, Subject, interval, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,14 @@ import { Observable, Observer, interval, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  isShowingReader = true;
+
+  toggle() {
+    this.isShowingReader = !this.isShowingReader;
+  }
+
+
   createObserver(id: string): Observer<number> {
     return {
       next: val => console.log(`Observer ${id} next ${val}`), 
@@ -32,16 +40,58 @@ export class AppComponent {
         setTimeout(() => observer.next(400), 7000);
         setTimeout(() => observer.next(500), 9000);
         setTimeout(() => observer.complete(), 10000);
-
-
     });
+  }
+
+  createHotCustomObservable(): Observable<number> {
+    const subject = new Subject<number>();
+
+    subject.next(42);
+    setTimeout(() => subject.next(100), 1000);
+    setTimeout(() => subject.next(200), 2000);
+    setTimeout(() => subject.next(300), 4000);
+    setTimeout(() => subject.next(400), 7000);
+    setTimeout(() => subject.next(500), 9000);
+    setTimeout(() => subject.complete(), 10000);
+
+    return subject;
+  }
+
+  createBehaviorCustomObservable(): Observable<number> {
+    const subject = new BehaviorSubject<number>(42);
+
+    setTimeout(() => subject.next(100), 1000);
+    setTimeout(() => subject.next(200), 2000);
+    setTimeout(() => subject.next(300), 4000);
+    setTimeout(() => subject.next(400), 7000);
+    setTimeout(() => subject.next(500), 9000);
+    setTimeout(() => subject.complete(), 10000);
+
+    return subject;
+  }
+
+  createReplayCustomObservable(): Observable<number> {
+    const subject = new ReplaySubject<number>(2);
+
+    subject.next(42);
+
+    setTimeout(() => subject.next(100), 1000);
+    setTimeout(() => subject.next(200), 2000);
+    setTimeout(() => subject.next(300), 4000);
+    setTimeout(() => subject.next(400), 7000);
+    setTimeout(() => subject.next(500), 9000);
+    setTimeout(() => subject.complete(), 10000);
+    setTimeout(() => subject.next(1000), 12000);
+
+    return subject;
   }
 
 
   go() {
     const observerA = this.createObserver('A');
     const observerB = this.createObserver('B');
-    const observable = this.createCustomObservable();
+    const observerC = this.createObserver('C');
+    const observable = this.createReplayCustomObservable();
 
     console.log('Subscribing Observer A');
     observable.subscribe(observerA);
@@ -50,6 +100,11 @@ export class AppComponent {
       console.log('Subscribing Observer B');
       observable.subscribe(observerB);
     } , 2500);
+
+    setTimeout(() => {
+      console.log('Subscribing Observer C');
+      observable.subscribe(observerC);
+    }, 12000);
 
 
   }
