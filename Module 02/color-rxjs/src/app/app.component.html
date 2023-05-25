@@ -1,0 +1,13 @@
+<div class="tools">
+    <input type="search" #keyword (input)="search$.next(keyword.value)">
+    <img src="https://i.redd.it/o6m7b0l6h6pz.gif" *ngIf="isBusy$ | async">
+</div>
+<div class="results">
+    <div *ngFor="let result of results$ | async" 
+        class="item" [style.background]="result.code">
+        {{result.displayName}}
+    </div>
+</div>
+
+
+<app-on-busy-pulse [value]="isBusy$ | async"></app-on-busy-pulse>
