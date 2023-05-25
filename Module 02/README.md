@@ -4,6 +4,7 @@
 |     |     |
 | --- | --- |
 | [fun-with-rxjs](./fun-with-rxjs/) | RxJS Observables, Subjects, Operators |
+| [colors-rxjs](./color-rxjs/README.md) | Operators, Higher order observables |
 
 
 ### Introduction to RxJS
@@ -69,3 +70,5 @@
 * We saw that there are several `flatenning` operators that reduce the order of the observable
 * We used `mergeAll` and `switchAll` after the `map`
 * We understood that `switchMap` is short for `map` and then `switchAll`
+* We saw a few other "flattening" operators like `concatAll` and `exhaustAll`
+* 
