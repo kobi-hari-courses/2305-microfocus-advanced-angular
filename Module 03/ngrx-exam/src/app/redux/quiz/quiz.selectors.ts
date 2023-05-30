@@ -12,3 +12,9 @@ export const selectCurrentQuestionIndex = createSelector(selectAllAnswers, all =
 export const selectCurrentQuestion = createSelector(selectAllQuestions, selectCurrentQuestionIndex, 
     (all, index) => all[index]
     );
+
+export const selectStatus = createSelector(selectFeature, state => state.status);
+
+export const selectIsBusy = createSelector(selectStatus, status => status.length > 0);
+
+export const selectMessage = createSelector(selectFeature, state => state.message);

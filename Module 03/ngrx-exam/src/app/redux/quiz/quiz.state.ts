@@ -7,9 +7,13 @@ export const QuizFeatureKey = 'quiz';
 export interface QuizState {
     readonly questions: Question[], 
     readonly answers: Answer[], 
+    readonly status: string;
+    readonly message: string;
 }
 
 export const INITIAL_QUIZ_STATE: QuizState = {
     questions: ALL_QUESTIONS, 
-    answers: []
+    answers: [], 
+    status: '', 
+    message: ''
 }

@@ -1,3 +1,12 @@
+<h1>Status: {{status$ | async}}</h1>
+<h2>Message: {{message$ | async}}</h2>
+<img *ngIf="isBusy$| async" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif">
+
+
+<hr>
+
 <app-current-question-presenter></app-current-question-presenter>
 
 <button (click)="reset()">Reset</button>
+<button (click)="goToAdmin()">Go To Admin</button>
+<button (click)="generateNewQuestions()">Generate new questions</button>
