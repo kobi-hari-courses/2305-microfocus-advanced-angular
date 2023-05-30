@@ -1,0 +1,30 @@
+:host {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    h1 {
+        background-color: rgb(50, 50, 141);
+        color: white;
+        margin: 0;
+        padding: 4px;
+    }
+
+    .all-answers {
+        display: flex;
+        flex-direction: column;
+
+        .answer {
+            border: 1px solid rgb(105, 105, 192);
+            padding: 3px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(105, 105, 192, 0.16);
+            }
+        }
+    }
+
+
+}
