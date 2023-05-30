@@ -1,6 +1,6 @@
 import { Question } from "./question.model";
 
-export const AllQuestions: Question[] = [
+export const ALL_QUESTIONS: Question[] = [
     {
         caption: 'What do you get when you add Red to Green and Blue?', 
         answers: ['Black', 'Gray', 'White', 'Brown'], 

@@ -1,0 +1,7 @@
+<ng-container *ngIf="question$ | async as question">
+    <h1>{{question.caption}}</h1>
+    <div *ngFor="let answer of question.answers">
+        {{answer}}
+    </div>
+
+</ng-container>
