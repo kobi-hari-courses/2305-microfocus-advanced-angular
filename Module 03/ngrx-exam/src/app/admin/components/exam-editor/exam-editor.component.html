@@ -1,0 +1,15 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <div *ngFor="let caption of vm.captions" [class.current]="caption === vm.current.caption">
+        {{caption}}
+    </div>
+    <button (click)="nextQuestion()">Next</button>
+    <button (click)="prevQuestion()">Prev</button>
+    <button (click)="createNewExam()">Generate new questions</button>
+
+    <div> 
+        <h1>{{vm.current.caption}}</h1>
+        <div *ngFor="let answer of vm.current.answers">
+            {{answer}}
+        </div>
+    </div>
+</ng-container>

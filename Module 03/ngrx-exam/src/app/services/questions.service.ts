@@ -28,7 +28,7 @@ export class QuestionsService {
 
   }
 
-  async getNewQuestions(): Promise<Question[]> {
+  async getNewQuestions(length: number = 10): Promise<Question[]> {
     this.counter++;
 
     if (this.counter == 3) {
@@ -38,7 +38,7 @@ export class QuestionsService {
     await this.delay(3000);
 
     console.log('Finished Generating new questions');
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => this.randomQuestion());
+    return Array(length).fill(0).map(i => this.randomQuestion());
     
   }
 
