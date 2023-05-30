@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { UserActions } from './redux/actions/user.actions';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngrx-exam';
+  constructor(private store: Store){}
+
+  reset() {
+    const action = UserActions.reset();
+    this.store.dispatch(action);
+  }
+
 }
